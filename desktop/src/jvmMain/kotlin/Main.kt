@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollbarAdapter
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -57,7 +58,7 @@ fun VerticalReorderList(
             modifier = Modifier.reorderable(state, onMove)) {
             items(items, { it }) { item ->
                 Column(
-                    modifier = Modifier.draggedItem(state.offsetByKey(item))
+                    modifier = Modifier.draggedItem(state.offsetByKey(item), shape = RoundedCornerShape(0.dp), shadowSize = 1.dp)
                         .background(MaterialTheme.colors.surface)
                 ) {
                     Row(

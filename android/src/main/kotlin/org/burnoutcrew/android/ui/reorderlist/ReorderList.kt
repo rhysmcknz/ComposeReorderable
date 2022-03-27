@@ -74,7 +74,9 @@ private fun HorizontalReorderList(
                     .size(100.dp)
                     .draggedItem(
                         offset = state.offsetByIndex(idx),
-                        orientation = Orientation.Horizontal
+                        orientation = Orientation.Horizontal,
+                        shape = RoundedCornerShape(0.dp),
+                        shadowSize = 1.dp
                     )
                     .scale(if (state.draggedIndex == null || state.draggedIndex == idx) 1f else .9f)
                     .clip(RoundedCornerShape(8.dp))
@@ -116,7 +118,7 @@ private fun VerticalReorderList(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .draggedItem(state.offsetByKey(item.key))
+                        .draggedItem(state.offsetByKey(item.key), shape = RoundedCornerShape(0.dp), shadowSize = 1.dp)
                         .background(MaterialTheme.colors.surface)
                         .detectReorderAfterLongPress(state)
                 ) {

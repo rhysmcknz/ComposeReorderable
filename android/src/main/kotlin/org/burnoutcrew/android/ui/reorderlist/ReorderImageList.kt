@@ -21,6 +21,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -59,7 +60,7 @@ fun ReorderImageList(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .draggedItem(state.offsetByKey(item))
+                    .draggedItem(state.offsetByKey(item), shape = RoundedCornerShape(0.dp), shadowSize = 1.dp)
                     .background(MaterialTheme.colors.surface)
                     .detectReorderAfterLongPress(state)
             ) {

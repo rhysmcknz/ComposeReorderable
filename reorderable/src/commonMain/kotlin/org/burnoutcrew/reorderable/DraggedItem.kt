@@ -18,13 +18,19 @@ package org.burnoutcrew.reorderable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 
 
 fun Modifier.draggedItem(
     offset: Float?,
     orientation: Orientation = Orientation.Vertical,
+    shadowSize: Dp,
+    shape: Shape
 ): Modifier = composed {
     Modifier
         .zIndex(offset?.let { 1f } ?: 0f)
@@ -36,6 +42,8 @@ fun Modifier.draggedItem(
                     translationX = this
                 }
             }
-            shadowElevation = offset?.let { 8f } ?: 0f
         }
+        .shadow(if (offset != null) {
+            shadowSize
+        } else 0.dp, shape)
 }
